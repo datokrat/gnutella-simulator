@@ -1,0 +1,1 @@
+* Only select k randomly chosen peers in peer.start()

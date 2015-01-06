@@ -1,0 +1,66 @@
+<!doctype html>
+<head>
+	<title>Gnutella Simulator Klappe die Fünfte</title>
+	<meta charset="utf-8" />
+	<style>
+		table, th, td {
+		    border: 1px solid black;
+		    border-collapse: collapse;
+		    margin: 10px;
+		}
+		th,td {
+		    padding: 5px;
+		}
+	</style>
+</head>
+
+<table data-bind="">
+	<thead>
+		<tr>
+			<th>Von</th>
+			<th>Nach</th>
+			<th>Verfügbar</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: availabilityTests">
+		<tr>
+			<td data-bind="text: from.name"></td>
+			<td data-bind="text: to.name"></td>
+			<td data-bind="text: available"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table data-bind="">
+	<thead>
+		<tr>
+			<th>Nachbarn (Grad)</th>
+			<th>Zahl der Peers</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: numberNGradedPeers().getAll()">
+		<tr>
+			<td data-bind="text: $index"></td>
+			<td data-bind="text: $data != null ? $data : 0"></td>
+		</tr>
+	</tbody>
+</table>
+
+<table data-bind="">
+	<thead>
+		<tr>
+			<th>Peer-Name</th>
+			<th>Nachbarn</th>
+		</tr>
+	</thead>
+	<tbody data-bind="foreach: peers">
+		<tr>
+			<td data-bind="text: name"></td>
+			<td data-bind="text: neighbors().map(function(p) { return p.name() })"></td>
+		</tr>
+	</tbody>
+</table>
+
+<script src="libs/knockout.js"></script>
+<script src="scripts/array.js"></script>
+<script data-main="scripts/index" src="scripts/require.js"></script>
